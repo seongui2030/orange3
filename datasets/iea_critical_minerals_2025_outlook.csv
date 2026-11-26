@@ -1,0 +1,31 @@
+﻿Mineral,Year,Scenario,Metric,Value,Unit,Source
+Copper,2035,STEPS (Base),Supply_to_Demand_Ratio,70,%,IEA Global Critical Minerals Outlook 2025
+Lithium,2035,STEPS (Base),Supply_to_Demand_Ratio,61,%,IEA Global Critical Minerals Outlook 2025
+Nickel,2035,STEPS (Base),Supply_to_Demand_Ratio,85,%,IEA Global Critical Minerals Outlook 2025
+Cobalt,2035,STEPS (Base),Supply_to_Demand_Ratio,86,%,IEA Global Critical Minerals Outlook 2025
+Graphite,2035,STEPS (Base),Supply_to_Demand_Ratio,89,%,IEA Global Critical Minerals Outlook 2025
+Rare earths,2035,STEPS (Base),Supply_to_Demand_Ratio,105,%,IEA Global Critical Minerals Outlook 2025
+Copper,2035,STEPS,Supply_Shortfall_Share,30,%,IEA Global Critical Minerals Outlook 2025
+Lithium,2035,STEPS,Supply_Shortfall_Share,40,%,IEA Global Critical Minerals Outlook 2025
+Copper,2035,STEPS,N1_Supply_vs_Demand,96,%,IEA Global Critical Minerals Outlook 2025
+Lithium,2035,STEPS,N1_Supply_vs_Demand,67,%,IEA Global Critical Minerals Outlook 2025
+Nickel,2035,STEPS,N1_Supply_vs_Demand,53,%,IEA Global Critical Minerals Outlook 2025
+Cobalt,2035,STEPS,N1_Supply_vs_Demand,65,%,IEA Global Critical Minerals Outlook 2025
+Graphite,2035,STEPS,N1_Supply_vs_Demand,35,%,IEA Global Critical Minerals Outlook 2025
+Rare earths,2035,STEPS,N1_Supply_vs_Demand,42,%,IEA Global Critical Minerals Outlook 2025
+Nickel,2024,Historical/Base,Top3_Mining_Concentration,75,%,IEA Global Critical Minerals Outlook 2025
+Nickel,2035,STEPS,Top3_Mining_Concentration,85,%,IEA Global Critical Minerals Outlook 2025
+Lithium,2024,Historical/Base,Top3_Mining_Concentration_Upper,75,%,IEA Global Critical Minerals Outlook 2025
+Lithium,2035,STEPS,Top3_Mining_Concentration_Upper,70,%,IEA Global Critical Minerals Outlook 2025
+Copper,2040,STEPS,Demand_Growth_vs_Base,30,%,IEA Global Critical Minerals Outlook 2025
+Lithium,2040,STEPS,Demand_Growth_Multiple,5.0,x,IEA Global Critical Minerals Outlook 2025
+Graphite,2040,STEPS,Demand_Growth_Multiple,2.0,x,IEA Global Critical Minerals Outlook 2025
+Nickel,2040,STEPS,Demand_Growth_Multiple,2.0,x,IEA Global Critical Minerals Outlook 2025
+Cobalt,2040,STEPS,Demand_Growth_Min_Pct,50,%,IEA Global Critical Minerals Outlook 2025
+Cobalt,2040,STEPS,Demand_Growth_Max_Pct,60,%,IEA Global Critical Minerals Outlook 2025
+Rare earths,2040,STEPS,Demand_Growth_Min_Pct,50,%,IEA Global Critical Minerals Outlook 2025
+Rare earths,2040,STEPS,Demand_Growth_Max_Pct,60,%,IEA Global Critical Minerals Outlook 2025
+Copper,2050,STEPS,New_Mining_Reduction_via_Recycling,35,%,IEA Global Critical Minerals Outlook 2025
+Cobalt,2050,STEPS,New_Mining_Reduction_via_Recycling,35,%,IEA Global Critical Minerals Outlook 2025
+Lithium,2050,STEPS,New_Mining_Reduction_via_Recycling,20,%,IEA Global Critical Minerals Outlook 2025
+Nickel,2050,STEPS,New_Mining_Reduction_via_Recycling,15,%,IEA Global Critical Minerals Outlook 2025

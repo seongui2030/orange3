@@ -1,0 +1,13 @@
+﻿Entity,Entity_Type,Year,Data_Center_Electricity_Share_Pct,GDP_Growth_Rate_Pct,GDP_Per_Capita_Int_Dollar,Primary_Energy_Per_Capita,Access_To_Electricity_Pct,Data_Source
+United States,Country,2020,4.9,,,,,OWID / IEA / Ember
+Europe (IEA),IEA Region,2020,1.9,,,,,OWID / IEA / Ember
+World,World,2020,1.5,,,,,OWID / IEA / Ember
+China,Country,2020,1.1,,,,,OWID / IEA / Ember
+World excl. United States and China,Region,2020,0.9,,,,,OWID / IEA / Ember
+Africa (IEA),IEA Region,2020,0.2,,,,,OWID / IEA / Ember
+United States,Country,2025,4.9,,,,,OWID / IEA / Ember
+Europe (IEA),IEA Region,2025,1.9,,,,,OWID / IEA / Ember
+World,World,2025,1.5,,,,,OWID / IEA / Ember
+China,Country,2025,1.1,,,,,OWID / IEA / Ember
+World excl. United States and China,Region,2025,0.9,,,,,OWID / IEA / Ember
+Africa (IEA),IEA Region,2025,0.2,,,,,OWID / IEA / Ember

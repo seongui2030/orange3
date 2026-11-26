@@ -1,0 +1,91 @@
+# 오렌지3(Orange Data Mining) 회귀·시계열 수행평가용 데이터셋 및 출처 정리
+
+> **활용 안내:** 오렌지3에서 **회귀(Regression)** 및 **시계열(Time Series)** 분석 수행평가를 진행할 때 활용할 수 있는 타겟(y)·전망 지표와 독립변수(X)·국가·연도 패널 결합용 공식 데이터 출처를 정리했습니다. 플랫폼 검색 시에는 긴 문장보다 핵심 키워드 위주로 검색하는 것이 유리합니다.
+
+---
+
+## 1. 타겟(y) 후보: 전력 수요 전망 & 핵심 광물 수급 예측
+
+* **데이터센터 전력 수요 추이 및 전망**
+  * **내용:** 전 세계 데이터센터 전력 소비 추이(2024년 약 415 TWh, 전체 전력의 약 1.5%) 및 AI 확산에 따른 2030년 전망(약 945~1,000 TWh 수준, 2035년 피크 전력 수요 증가 전망 등)을 다루는 지표
+  * **공식 출처:**
+    * IEA Energy and AI: https://www.iea.org/data-and-statistics/data-product/energy-and-ai
+    * Our World in Data – Share of total electricity demand used by data centers: https://ourworldindata.org/grapher/data-centers-share-electricity-demand
+    * Green Calculus Data Center Energy Consumption: https://greencalculus.com/data/data-center-energy-consumption/
+* **핵심 광물(리튬·코발트·희토류 등) 수요 및 공급 전망**
+  * **내용:** 에너지 전환, 전력망·배터리, 첨단 전자·AI 산업에 필요한 리튬, 코발트, 희토류 등의 2030·2035·2050년 시나리오별 수요·공급 전망 데이터
+  * **공식 출처:**
+    * IEA Global Critical Minerals Outlook: https://www.iea.org/reports/global-critical-minerals-outlook-2025/overview-of-outlook-for-key-minerals
+
+---
+
+## 2. 독립변수(X) 및 국가·연도 패널 결합용 지표 (Our World in Data)
+
+오렌지3에서 **국가(Entity/Country)**와 **연도(Year)**를 기준으로 여러 CSV 파일을 병합(`Merge Data`)하면, 회귀 모델용 독립변수(`1인당 GDP`, `1인당 1차 에너지 사용량`, `전기를 이용할 수 있는 인구 비율` 등)와 시계열 추이 데이터를 구성할 수 있습니다.
+
+* **1인당 GDP (GDP per capita) / 연간 GDP 성장률:** 국가별 경제 규모 및 성장 추이 지표 (OWID 검색어: `GDP per capita`)
+* **1인당 1차 에너지 사용량 (Primary energy consumption per capita):** 국가별 에너지 소비 수준 지표 (OWID 검색어: `Primary energy consumption per capita`)
+* **전기를 이용할 수 있는 인구 비율 (Access to electricity):** 전력 인프라 보급률 지표 (OWID 검색어: `Access to electricity`)
+* **AI 훈련 연산량 추이:** Epoch AI(에포크 AI) 및 Our World in Data에서 탐색 가능한 주요 AI 시스템 훈련 연산량(FLOPs) 추이 지표
+
+---
+
+## 3. 오렌지3(Orange3) 수행평가 적용 팁
+
+1. **시계열 분석 vs 회귀 분석 역할 나누기:**
+   * **시계열(Time Series) 위젯 활용:** `Year`(연도)를 시간 축으로 두고 전력 소비 비중, 에너지 사용량, GDP 등의 과거 추이를 살펴보며 추세·계절성·이동평균을 시각화합니다.
+   * **회귀(Regression) 위젯 활용:** 국가·연도별 지표(`1인당 GDP`, `1인당 1차 에너지 사용량`, `전기를 이용할 수 있는 인구 비율` 등)를 피처(`Feature`)로 두고, 연속형 수치 타겟(`Target`)을 예측하는 **Linear Regression**, **Random Forest**, **Gradient Boosting** 모델의 `RMSE`, `MAE`, `R²`를 비교합니다.
+2. **데이터 병합 전 확인 사항:**
+   * 국가명(`Entity`)과 연도(`Year`) 표기가 일치하는지 확인한 뒤 병합하고, 전망치(Forecast/Projection)가 포함된 행과 과거 실측치 행을 구분해 학습(`Train`)과 예측(`Test`) 대상을 명확히 분리합니다.
+
+---
+# 2025년 글로벌 핵심 광물 전망 데이터 구조화 및 오렌지3(Orange3) 활용 가이드
+
+현재 보고 계신 [2025년 글로벌 핵심 광물 전망](https://www.iea.org/reports/global-critical-minerals-outlook-2025/overview-of-outlook-for-key-minerals) 페이지의 방대한 내용을 오렌지3(Orange Data Mining)에서 **회귀(Regression)** 및 **시계열(Time Series)** 수행평가용 데이터로 쓰기 좋게 구조화해 정리한 가이드입니다. 페이지 본문에는 차트(그래프) 이미지와 시나리오별 수치·비율 정보가 담겨 있으므로, 이를 **표(CSV/Excel)** 형태로 옮겨 적는 방식이 핵심입니다.
+
+---
+
+## 1. 페이지 내 핵심 광물 전망 데이터 정리 축
+
+페이지의 내용을 아래 4가지 축으로 나누어 표로 정리하면 오렌지3에서 분석 목적에 맞게 변수를 선택하기 쉽습니다.
+
+### ① 2040년 수요 증가 전망 (시나리오별 배율·증가율)
+* 현행 정책 시나리오(STEPS) 기준 2040년까지 리튬 수요 5배 증가, 흑연·니켈 2배 증가, 코발트·희토류 50~60% 증가, 구리 30% 증가 등의 전망치가 제시되어 있습니다.
+* 광업 신규 자본 투자 규모(STEPS 약 5천억 달러, APS 약 6천억 달러)와 재활용 확대에 따른 신규 광산 개발 필요량 감소율(2040년 5~30%, 2050년 구리·코발트 35%, 리튬 20%, 니켈 15% 등)도 함께 묶어 둘 수 있습니다.
+
+### ② 2035년 광산 공급 vs 1차 공급 수요 (수급 격차)
+* 구리(70%), 리튬(61%), 니켈(85%), 코발트(86%), 흑연(89%), 희토류(105%) 등 각 광물 항목별 2035년 1차 공급 요구량 대비 기본 사례 공급 비중과 차트 축(예: `Kt Li`, `kt`, `산`) 단위를 기록합니다.
+* 본문에는 STEPS 시나리오 기준 2035년 구리 30%, 리튬 40% 공급 부족 전망이 언급되어 있습니다.
+
+### ③ 생산 및 정제 지리적 집중도 (2024년 vs 2030/2035년)
+* 상위 3개 생산국 집중도 변화(예: 니켈 채굴 상위 3개국 점유율 2024년 75% → 2035년 85%, 리튬 채굴 상위 3개국 75% 이상 → 70% 미만)와 주요 국가(중국, 인도네시아, 칠레, 콩고민주공화국, 호주 등) 비중을 정리합니다.
+* 2035년 중국의 정제 점유율(정제 리튬·코발트 60% 이상, 배터리용 흑연·희토류 약 80%)도 중요한 맥락 변수입니다.
+
+### ④ N-1 공급 충격 취약성 및 가격 파급 효과
+* 최대 공급국(및 수요처)을 제외한 N-1 공급량 대비 N-1 수요 충족률(예: 구리 96%, 리튬 67%, 니켈 53%, 코발트 65%, 흑연 35%, 희토류 42%)을 정리합니다.
+* 광물 가격 급등 시 배터리 팩 가격 상승률이나 흑연 가격 5배 상승 시 지역별 배터리 셀 균등화 생산비용(`USD/kWh`) 변화 차트 수치도 부가 변수로 활용할 수 있습니다.
+
+---
+
+## 2. 오렌지3(Orange3)용 데이터셋 표 구성 예시
+
+오렌지3의 `File` 위젯으로 불러올 수 있도록 **광물명, 연도(또는 시점), 시나리오, 지표 구분, 수치, 단위**를 열(Column)로 구성하는 것이 좋습니다.
+
+| Mineral (광물) | Year (연도) | Scenario (시나리오) | Metric_Type (지표 유형) | Value (수치) | Unit (단위) |
+| :--- | :---: | :--- | :--- | :---: | :---: |
+| Lithium | 2035 | STEPS (Base) | Supply_to_Demand_Ratio | 61 | % |
+| Lithium | 2035 | STEPS | N1_Supply_vs_Demand | 67 | % |
+| Copper | 2035 | STEPS (Base) | Supply_to_Demand_Ratio | 70 | % |
+| Copper | 2035 | STEPS | N1_Supply_vs_Demand | 96 | % |
+| Nickel | 2035 | STEPS (Base) | Supply_to_Demand_Ratio | 85 | % |
+| Nickel | 2035 | STEPS | N1_Supply_vs_Demand | 53 | % |
+
+* **행(Row) 단위 설계 팁:** 광물(`Mineral`)과 시나리오(`Scenario`)를 범주형(`Categorical`), `Year`를 수치형 또는 시간 변수, `Value`를 타겟(`Target`) 또는 연속형 수치로 지정하면 오렌지3에서 필터링(`Select Rows`)과 회귀·시계열 위젯 연결이 수월합니다.
+* **차트 수치 확인 시 유의점:** 페이지 내 차트에는 `산`으로 표기된 단위 등 번역·표기 차이나 축 눈금이 있으므로, 차트의 [열기](https://www.iea.org/data-and-statistics/charts/expected-mine-supply-from-existing-and-announced-projects-and-primary-supply-requirements-for-copper-2035) 버튼이나 [전체 보고서 다운로드](https://www.iea.org/files/ef5e9b70-3374-4caa-ba9d-19c72253bfc4/GlobalCriticalMineralsOutlook2025.pdf)를 활용해 정확한 값과 단위를 대조하면서 표를 채우는 것이 정확합니다.
+
+---
+
+## 3. 수행평가에서 회귀·시계열로 연결하는 방법
+
+1. **시계열(Time Series) 흐름 정리:** `Year`를 기준으로 2024년 → 2030년 → 2035년 → 2040년 → 2050년으로 이어지는 시나리오·전망 수치를 정렬해 광물별 성장·공급 추이를 비교합니다.
+2. **회귀(Regression) 변수 확장:** 위 광물 표에 이전에 살펴본 [Share of total electricity demand used by data centers, 2025](
