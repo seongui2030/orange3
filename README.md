@@ -106,7 +106,13 @@ Thumbs.db
 
 ```bash
 git rm -r --cached orange_env
+# 작업 파일을 D:\orange3 루트로 옮기기
+Move-Item -Path .\orange_env\K-means_전기차충전소군집.ows, .\orange_env\K-means.png, -Destination D:\orange3\ -ErrorAction SilentlyContinue
+
+# 루트에 있는 작업 파일 스테이징하기
 git add .gitignore K-means_전기차충전소군집.ows K-means.png README.md
+
+# 커밋 및 푸시 완료하기
 git commit -m "Add .gitignore and exclude virtual environment"
 git push
 ```
