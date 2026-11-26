@@ -1,0 +1,15 @@
+# 가상환경 폴더 전체 제외 (Lib, Scripts, Include, pyvenv.cfg 등 포함)
+orange_env/
+
+# 파이썬 캐시 및 빌드 산출물
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+
+# 환경 변수 및 에디터/OS 임시 파일
+.env
+.DS_Store
+Thumbs.db
